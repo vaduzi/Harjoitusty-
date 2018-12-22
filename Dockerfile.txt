@@ -1,0 +1,13 @@
+﻿FROM node:8
+
+WORKDIR /LUT/WWW-sovellukset\Harjoitustyö\
+
+COPY Harjoitustyö.html./
+COPY HT.js./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+CMD [ "npm", "start" ]
