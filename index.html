@@ -1,0 +1,62 @@
+<!-- HARJOITUSTYÖ, OSTOSLISTA: MATERIALIZE, VUE -->
+<!-- VALTTERI VEIJALAINEN -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Shopping list</title> <!-- Sivun otsikko -->
+  <meta charset="UTF-8">
+
+  <!-- CSS:n koodikirjastojen lataus -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Repository does not contain style.css file -->
+  <!-- <link href="style.css" rel="stylesheet"> -->
+
+  <!-- JS:n koodikirjastojen lataus + oma lähdekoodi  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+
+</head>
+
+<body>
+  <main>
+    <h1 class="center light blue accent-4 container" ,>Groceries</h1>
+    <!-- pääotsikko, jolle on materializen avulla tehty tausta-->
+    <div class="container js-instance"></div>
+    <section class="demo-section">
+
+      <div id="app" class="light blue container">
+        <!-- Lisätään sinisen värinen containeri-->
+        <div class="col s4 center container">
+          <!-- keskitys ja containeri -->
+          <div class="form__item container">
+
+            <!-- Kirjoituskentän luonti -->
+            <input type="text" v-model="newItem" class="form__field" placeholder="Add purchase" />
+
+            <button class="button grey" v-on:click="add">Add</button>
+          </div>
+
+          <ul class="list" v-if="items.length">
+            <!-- listan läpikäynti-->
+            <!-- changed list to items because vue instance did not contain list named 'list' -->
+            <li class="list__item" v-for="(item, index) in items">
+              {{item}} <!-- added a simple template -->
+              <a class="waves-effect waves-light btn" v-on:click="removeItem(index)">Remove</a>
+            </li>
+          </ul>
+          <div v-if="!items.length">The list is empty!</div>
+          <a class="brand-logo center"><img src="https://cdn.pixabay.com/photo/2016/04/21/11/32/groceries-1343141_960_720.jpg"
+              height="200px"></img>
+
+        </div>
+      </div>
+    </section>
+    <!-- Changed order to load custom script only after dependencies -->
+    <script src="HT.js"></script>
+</body>
+
+</html>
